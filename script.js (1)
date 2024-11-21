@@ -1,0 +1,55 @@
+// العناصر من الصفحة
+const form = document.getElementById("studentForm");
+const groups = {
+  1: [],
+  2: [],
+  3: [],
+  4: []
+};
+
+// دالة لتحديث عرض المجموعات
+function renderGroups() {
+  for (let i = 1; i <= 4; i++) {
+    const groupElement = document.getElementById(`group${i}`).querySelector("ul");
+    groupElement.innerHTML = ""; // مسح المحتوى القديم
+    groups[i].forEach(student => {
+      const li = document.createElement("li");
+      li.textContent = student;
+      groupElement.appendChild(li);
+    });
+  }
+}
+
+// التعامل مع حدث الإرسال
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // منع إعادة تحميل الصفحة
+
+  const studentName = document.getElementById("studentName").value.trim();
+  const groupNumber = parseInt(document.getElementById("groupNumber").value);
+
+  // التحقق من صحة المدخلات
+  if (!studentName) {
+    alert("يرجى إدخال اسم الطالب.");
+    return;
+  }
+  if (groups[groupNumber].length >= 7) {
+    alert("لا يمكن إضافة أكثر من 7 طلاب إلى نفس المجموعة.");
+    return;
+  }
+  if (Object.values(groups).flat().includes(studentName)) {
+    alert("لا يمكن استخدام نفس الاسم مرتين.");
+    return;
+  }
+
+  // إضافة الطالب إلى المجموعة
+  groups[groupNumber].push(studentName);
+
+  // تحديث عرض المجموعات
+  renderGroups();
+
+  // إعادة تعيين الحقول
+  form.reset();
+});
+
+// عرض المجموعات عند تحميل الصفحة
+renderGroups();

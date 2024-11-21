@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تقسيم الطلاب</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>تقسيم الطلاب إلى مجموعات</h1>
+  <form id="studentForm">
+    <label for="studentName">اسم الطالب:</label>
+    <input type="text" id="studentName" required>
+    <label for="groupNumber">رقم المجموعة:</label>
+    <select id="groupNumber" required>
+      <option value="1">المجموعة 1</option>
+      <option value="2">المجموعة 2</option>
+      <option value="3">المجموعة 3</option>
+      <option value="4">المجموعة 4</option>
+    </select>
+    <button type="submit">حفظ</button>
+  </form>
+
+  <div id="groups">
+    <h2>المجموعات:</h2>
+    <div id="group1">
+      <h3>المجموعة 1</h3>
+      <ul></ul>
+    </div>
+    <div id="group2">
+      <h3>المجموعة 2</h3>
+      <ul></ul>
+    </div>
+    <div id="group3">
+      <h3>المجموعة 3</h3>
+      <ul></ul>
+    </div>
+    <div id="group4">
+      <h3>المجموعة 4</h3>
+      <ul></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
